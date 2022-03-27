@@ -40,11 +40,11 @@ def sms():
 
     elif 'who made you' in incoming_msg:
         # ! Telling about your developer
-        msg.body('Samwit Adhikary made me.❤️❤️')
+        msg.body('Raghunadh Barlapudi made me.❤️❤️')
 
     elif "who are you" in incoming_msg:
         # ! Telling who am I
-        msg.body('I am called Whatsapp Bot made by Samwit Adhikary.❤️❤️')
+        msg.body('I am called Whatsapp Bot made by Raghunadh Barlapudi.❤️❤️')
 
     elif 'who developed you' in incoming_msg:
         # ! Returning whatsapp obeying
@@ -54,12 +54,12 @@ def sms():
         # ! Telling how am I
         msg.body('I am fine..\nWhat about you??')
 
-    elif '#about' in incoming_msg:
+    elif 'about' in incoming_msg:
         # ! Telling your features
         msg.body(
-            "Hi! I am Whatsapp Bot made By Samwit Adhikary. Did you know that you can find out the weather, a movie rating and much more on whatsapp with just a few words!\nTry one of the following and I'll look it up for you!\n\n#weather PLACE: Check out the weather at any place.\n\n#wiki NAME: Search Wikipedia for anything you want.\n\n#quote: We'll send you awesome quote whenever you want it.\n\n#movie NAME: Checkout the IMDB Rating about any movie.\n\n#book NAME: Get details of any book you're interested in.\n\n#meaning WORD: Don't know the meaning of a word someone just messaged you? Try out my built in dictionary\n\n#synonym WORD: Don't know the synonyms of any word. Try my built in synonym finder.\n\n#coronastats: To get current status of Coronavirus in India\n\n#fact: Awesome facts, served streaming hot, whenever you want it!\n\n#news: Get the top 5 breaking news.\n\n#joke: Get jokes.")
+            "Hi! I am Whatsapp Bot made By Raghunadh Barlapudi. Did you know that you can find out the weather, a movie rating and much more on whatsapp with just a few words!\nTry one of the following and I'll look it up for you!\n\n#weather PLACE: Check out the weather at any place.\n\n#wiki NAME: Search Wikipedia for anything you want.\n\n#quote: We'll send you awesome quote whenever you want it.\n\n#movie NAME: Checkout the IMDB Rating about any movie.\n\n#book NAME: Get details of any book you're interested in.\n\n#meaning WORD: Don't know the meaning of a word someone just messaged you? Try out my built in dictionary\n\n#synonym WORD: Don't know the synonyms of any word. Try my built in synonym finder.\n\n#coronastats: To get current status of Coronavirus in India\n\n#fact: Awesome facts, served streaming hot, whenever you want it!\n\n#news: Get the top 5 breaking news.\n\n#joke: Get jokes.")
 
-    elif '#joke' in incoming_msg:
+    elif 'joke' in incoming_msg:
         # ! Return random joke.
         url = 'https://official-joke-api.appspot.com/jokes/general/random'
         r = requests.get(url)
@@ -72,7 +72,7 @@ def sms():
         except:
             msg.body('Sorry.. No Joke Found!!')
 
-    elif '#news' in incoming_msg:
+    elif 'news' in incoming_msg:
         # ! Return top 5 headlines.
         url = 'http://newsapi.org/v2/top-headlines?country=in&apiKey=<Your Api Key>'
         r = requests.get(url)
@@ -86,7 +86,7 @@ def sms():
         except:
             msg.body('Sorry.. No News Found!!')
 
-    elif '#fact' in incoming_msg:
+    elif 'fact' in incoming_msg:
         # ! Return interesting facts.
         try:
             facts = randfacts.getFact()
@@ -94,7 +94,7 @@ def sms():
         except:
             msg.body('Sorry.. No Facts Found!!')
 
-    elif '#coronastats' in incoming_msg:
+    elif 'corona' in incoming_msg:
         # ! Return covid19 stats.
         url = 'https://coronavirus-19-api.herokuapp.com/countries/india'
         r = requests.get(url)
@@ -112,7 +112,7 @@ def sms():
         except:
             msg.body('Sorry I am unable to retrive corona stats at this time, try later.')
 
-    elif "#synonym" in incoming_msg:
+    elif "synonym" in incoming_msg:
         # ! Return 10 synonyms of the word.
         word = incoming_msg.replace('#synonym ', '')
         url = f'https://api.dictionaryapi.dev/api/v2/entries/en/{word}'
@@ -138,7 +138,7 @@ def sms():
         for mean in synonym[:10]:
             msg.body(mean + ', ')
 
-    elif '#meaning' in incoming_msg:
+    elif 'meaning' in incoming_msg:
         # ! Return meaning of word.
         word = incoming_msg.replace('#meaning ', '')
         url = f'https://api.dictionaryapi.dev/api/v2/entries/en/{word}'
@@ -172,7 +172,7 @@ def sms():
         except:
             msg.body('Sorry.. No Words Found!!')
 
-    elif '#book' in incoming_msg:
+    elif 'book' in incoming_msg:
         # ! Return book details
         name = incoming_msg.replace('#book ', '')
         url = f'https://www.googleapis.com/books/v1/volumes?q={name}'
@@ -230,7 +230,7 @@ def sms():
 
 
 
-    elif '#movie' in incoming_msg:
+    elif 'movie' in incoming_msg:
         name = incoming_msg.replace('#movie ', '')
         ids = []
         try:
@@ -271,7 +271,7 @@ def sms():
             msg.body(f"Sorry can't find movie {name}")
 
 
-    elif '#weather' in incoming_msg:
+    elif 'weather' in incoming_msg:
         # ! Returning Weather Report
         city_name = incoming_msg.replace('#weather ', '')
         r = requests.get(
@@ -292,7 +292,7 @@ def sms():
             titleName = city_name.title()
             msg.body(f"Sorry.. Can't find *{titleName}*..\nEnter any city name..\n*#weather kolkata*")
 
-    elif '#wiki' in incoming_msg:
+    elif 'wiki' in incoming_msg:
         # ! Returning summary from wikipedia
         query = incoming_msg.replace('#wiki ', '')
         wiki = wikipediaapi.Wikipedia('en')
@@ -304,7 +304,7 @@ def sms():
         except:
             msg.body("Sorry can't find anything.\nTry another search..")
 
-    elif '#quote' in incoming_msg:
+    elif 'quote' in incoming_msg:
         # ! Returning quotes
         r = requests.get('http://api.quotable.io/random')
         if r.status_code == 200:
